@@ -1,0 +1,43 @@
+.scroll-list {
+    height: 97vh;
+    width: 12vw;
+    overflow: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dex-no {
+    font-weight: bold;
+}
+
+.dex-name {
+    margin-left: 10px;
+}
+
+li :hover {
+    background: #CCC;
+    cursor: pointer;
+}
+
+/* Scrollbar CSS*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

@@ -1,0 +1,65 @@
+<div class="container" *ngIf="!pokemonService.pokemon">
+  <h2 class="centre-vertical">Click on a Pokémon from the list to view its details!</h2>
+</div>
+
+<div class="container" *ngIf="pokemonService.pokemon">
+  <div class="upper-content">
+
+    <div class="left-pane">
+      <img src="{{pokemonService.pokemon.sprites.front_default}}">
+      <h4>No. {{pokemonService.pokemon.id | number: '3.0'}}</h4>
+    </div>
+
+    <div class="right-pane">
+      <h2>{{pokemonService.pokemon.name | titlecase}}</h2>
+
+      <p>Height: {{pokemonService.pokemon.height / 10}}m</p>
+      <p>Weight: {{pokemonService.pokemon.weight / 10}}kg</p>
+
+      <div class="centre-horizontal">
+        <p *ngFor="let type of pokemonService.pokemon.types.slice().reverse() let i = index">
+          Type {{i + 1}}: {{type.type.name}}
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <hr>
+
+  <div class="lower-content">
+
+    <div class="left-pane">
+      <h3>Moves</h3>
+
+      <div class="left-pane">
+        <ul class="moves">
+          <li *ngFor="let move of pokemonService.pokemon.moves">
+            <span *ngIf="move.version_group_details[0].move_learn_method.name == 'level-up'">
+              <b>{{move.move.name.replace('-', ' ') | titlecase}} </b> | 
+              Lv. {{move.version_group_details[0].level_learned_at}}
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="left-pane">
+        <ul class="moves">
+          <li *ngFor="let move of pokemonService.pokemon.moves">
+            <span *ngIf="move.version_group_details[0].move_learn_method.name != 'level-up'">
+              <b>{{move.move.name.replace('-', ' ') | titlecase}} </b> |
+              {{move.version_group_details[0].move_learn_method.name}}
+            </span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="right-pane">
+      <h3>Abilities</h3>
+      <p *ngFor="let ability of pokemonService.pokemon.abilities">{{ability.ability.name}}</p>
+    </div>
+  </div>
+</div>

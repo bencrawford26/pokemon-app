@@ -1,0 +1,13 @@
+<ul class="scroll-list">
+  <li *ngFor="let pokemon of pokemonNames let i = index"
+    (click)="getPokemon(i + 1)">
+    <div>
+        <div>
+          <span class="dex-no">{{i + 1 | number: '3.0'}}</span>
+        </div>
+        <div class="dex-name">
+          {{pokemon.name | titlecase}}
+        </div>
+    </div>
+  </li>
+</ul>
