@@ -1,25 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { PokemonNames } from '../pokemon-names';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
+import { Pokemon } from '../pokemon';
 
 @Component({
   selector: 'app-pokemon',
   templateUrl: './pokemon.component.html',
-  styleUrls: ['./pokemon.component.css']
+  styleUrls: ['./pokemon.component.css'],
 })
 export class PokemonComponent implements OnInit {
-
-  pokemonNames: PokemonNames[];
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
-    this.getPokemonNames();
-  }
-
-  getPokemonNames(): void {
-    this.pokemonService.getPokemonNames()
-      .subscribe(response => this.pokemonNames = response.results);
+    this.pokemonService.get151Pokemon();
   }
 
   getPokemon(id: number): void {

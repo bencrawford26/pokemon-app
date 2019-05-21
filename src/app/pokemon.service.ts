@@ -19,13 +19,27 @@ export class PokemonService {
   private pokeUrl = "https://pokeapi.co/api/v2/"; //URL To Pokémon api.
 
   pokemon: Pokemon;
+  pokemonList: Pokemon[] = [];
+  typesList: string[] = [];
+  tempPokemonList: Pokemon[] = [];
 
 
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) { }
 
-  /** GET list of 151 Pokémon names and urls from server */
+  /** GET full details of each Pokémon from api */
+  get151Pokemon(): void {
+    this.getPokemonNames().subscribe(pkmn => {
+      for (let i = 0; i < pkmn.results.length; i++) {
+        this.getPokemon(i + 1).subscribe(pokemon => {
+          this.pokemonList.push(pokemon);
+          this.sortPokemon();
+          this.checkTypes(pokemon);
+        });
+      }
+    });
+  }
+
+  /** GET list of 151 Pokémon names and urls from api */
   getPokemonNames(): Observable<ListResponse> {
     const url = `${this.pokeUrl}pokemon/?limit=151`;
 
@@ -44,7 +58,48 @@ export class PokemonService {
   }
 
   updatePokemon(id: number): void {
-    this.getPokemon(id).subscribe(pkmn => this.pokemon = pkmn);
+    for (let i = 0; i < this.pokemonList.length; i++) {
+      if (this.pokemonList[i].id == id) this.pokemon = this.pokemonList[i];
+    }
+  }
+
+
+  sortPokemon(): void {
+    this.pokemonList.sort((n1, n2) => {
+      if (n1.id > n2.id) {
+        return 1;
+      }
+
+      if (n1.id < n2.id) {
+        return -1;
+      }
+
+      return 0;
+    });
+  }
+
+  checkTypes(pokemon: Pokemon): void {
+    for (let i = 0; i < pokemon.types.length; i++) {
+      if (!this.typesList.includes(pokemon.types[i].type.name)) this.typesList.push(pokemon.types[i].type.name);
+    }
+  }
+
+  filterListByType(type: string): void {
+    if(this.tempPokemonList.length == 0) {
+      this.tempPokemonList = this.pokemonList;
+    } else {
+      this.pokemonList = this.tempPokemonList;
+    }
+    var listByType: Pokemon[] = [];
+    this.tempPokemonList = this.pokemonList;
+
+    for (let i = 0; i < this.pokemonList.length; i++) {
+      for (let j = 0; j < this.pokemonList[i].types.length; j++) {
+        if (this.pokemonList[i].types[j].type.name == type) listByType.push(this.pokemonList[i]);
+      }
+    }
+
+    this.pokemonList = listByType;
   }
 
 

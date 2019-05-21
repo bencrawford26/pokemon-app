@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <span>{{title}}</span>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="space-fill"></span>
+
+    <mat-form-field>
+      <mat-label>Type Select</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let type of pokemonService.typesList" [value]="type" (click)="filterList(type)">
+          {{type | titlecase}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+</mat-toolbar>

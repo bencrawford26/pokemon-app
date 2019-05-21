@@ -1,12 +1,12 @@
 <ul class="scroll-list">
-  <li *ngFor="let pokemon of pokemonNames let i = index"
-    (click)="getPokemon(i + 1)">
+  <li *ngFor="let pkmn of pokemonService.pokemonList"
+    (click)="getPokemon(pkmn.id)">
     <div>
         <div>
-          <span class="dex-no">{{i + 1 | number: '3.0'}}</span>
+          <span class="dex-no">{{pkmn.id | number: '3.0'}}</span>
         </div>
         <div class="dex-name">
-          {{pokemon.name | titlecase}}
+          {{pkmn.name | titlecase}}
         </div>
     </div>
   </li>
