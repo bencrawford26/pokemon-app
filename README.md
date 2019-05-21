@@ -1,6 +1,10 @@
 # PokemonApp
 
-This project was created to pull data from the Pokémon API and display it similarly to a Pokédex. some other functionality has been added allowing you to filter Pokémon by type, heigh and weight. When the application loads a list of the original 151 Pokémon will be displayed in a list on the left of the screen, clicking any of these list items will display extra details on the Pokémon selected. To narrow down the list further you can use the filters available at the top right of the screen. The list can also be reset using the "Clear Filter" button next to the two dropdown lists.
+This project was created to pull data from the Pokémon API and display it similarly to a Pokédex.
+Some other functionality has been added allowing you to filter Pokémon by type, height and weight.
+When the application loads a list of the original 151 Pokémon will be displayed on the left of the screen, clicking any of these list items will display extra details on the Pokémon selected.
+To narrow down the list further you can use the filters available at the top right of the screen.
+The list can also be reset using the "Clear Filter" button next to the two dropdown lists.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
 
