@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 import { ListResponse } from './list-response';
 import { Pokemon } from './pokemon';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Injectable({
   providedIn: 'root'
@@ -85,11 +82,7 @@ export class PokemonService {
   }
 
   filterListByType(type: string): void {
-    if(this.tempPokemonList.length == 0) {
-      this.tempPokemonList = this.pokemonList;
-    } else {
-      this.pokemonList = this.tempPokemonList;
-    }
+    this.clearFilters();
     var listByType: Pokemon[] = [];
     this.tempPokemonList = this.pokemonList;
 
@@ -100,6 +93,32 @@ export class PokemonService {
     }
 
     this.pokemonList = listByType;
+  }
+
+  filterListByHeightWeight(from: number, to: number, option: string): void {
+    this.clearFilters();
+    var listByHeihtWeight: Pokemon[] = [];
+    this.tempPokemonList = this.pokemonList;
+
+    for (let i = 0; i < this.pokemonList.length; i++) {
+      if(option == 'Height') {
+        if (this.pokemonList[i].height >= from && this.pokemonList[i].height <= to) listByHeihtWeight.push(this.pokemonList[i]);
+      } else {
+        if (this.pokemonList[i].weight >= from*10 && this.pokemonList[i].weight <= to*10) listByHeihtWeight.push(this.pokemonList[i]);
+      }
+      
+    }
+
+    this.pokemonList = listByHeihtWeight;
+
+  }
+
+  clearFilters(): void {
+    if(this.tempPokemonList.length == 0) {
+      this.tempPokemonList = this.pokemonList;
+    } else {
+      this.pokemonList = this.tempPokemonList;
+    }
   }
 
 

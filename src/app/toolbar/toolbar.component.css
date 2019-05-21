@@ -6,3 +6,8 @@ mat-toolbar {
     margin-bottom: 2px; 
     height: 7.5vh;
 }
+
+mat-form-field {
+    width: 15vw;
+    margin-left: 1vw;
+}

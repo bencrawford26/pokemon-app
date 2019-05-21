@@ -4,6 +4,17 @@
     <!-- This fills the remaining space of the current row -->
     <span class="space-fill"></span>
 
+    <button mat-raised-button (click)="pokemonService.clearFilters()">Clear Filter</button>
+
+    <mat-form-field>
+      <mat-label>Filter By</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of filterOptions" [value]="option" (click)="openDialog(option)">
+          {{option | titlecase}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <mat-form-field>
       <mat-label>Type Select</mat-label>
       <mat-select>

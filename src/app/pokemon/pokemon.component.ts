@@ -1,6 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
-import { Pokemon } from '../pokemon';
 
 @Component({
   selector: 'app-pokemon',

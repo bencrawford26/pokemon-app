@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Select {{data.option}} Range:</h1>
+
+<mat-dialog-content [formGroup]="form">
+  <div>
+    <mat-form-field>
+      <input formControlName="from" matInput placeholder="{{data.option}} From:">
+
+      <mat-error>
+        Please enter a number greater than 0
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input formControlName="to" matInput placeholder="{{data.option}} To:">
+
+      <mat-error>
+        Please enter number greater than "rom"
+      </mat-error>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button cdkFocusInitial (click)="onOkClick(data)">Ok</button>
+</div>
