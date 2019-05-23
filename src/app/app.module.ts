@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatSelectModule, MatButtonModule, MatDialogModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatSelectModule, MatButtonModule, MatDialogModule, MatInputModule, MatMenuModule, MatCardModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -10,6 +10,10 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ListDetailComponent } from './list-detail/list-detail.component';
+import { FilterMenuComponent } from './filter-menu/filter-menu.component';
+import { TilesComponent } from './tiles/tiles.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,9 @@ import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
     PokemonDetailComponent,
     ToolbarComponent,
     FilterDialogComponent,
+    ListDetailComponent,
+    FilterMenuComponent,
+    TilesComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,11 +36,15 @@ import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
+    MatMenuModule,
+    MatCardModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   entryComponents: [
-    FilterDialogComponent
+    FilterDialogComponent,
+    PokemonDetailComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

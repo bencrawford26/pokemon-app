@@ -1,0 +1,23 @@
+<mat-menu #filterMenu="matMenu">
+
+  <h4>Filter By:</h4>
+
+  <div class="spaced">
+    <button mat-raised-button *ngFor="let option of filterOptions" [value]="option" (click)="openDialog(option)">
+      {{option | titlecase}}
+    </button>
+  </div>
+
+  <mat-form-field (click)="$event.stopPropagation();">
+    <mat-label>Type Select</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let type of pokemonService.typesList" [value]="type" (click)="filterList(type)">
+        {{type | titlecase}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-menu>
+
+<button mat-icon-button [matMenuTriggerFor]="filterMenu">
+  <mat-icon>filter_list</mat-icon>
+</button>

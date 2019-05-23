@@ -11,7 +11,6 @@ export class PokemonComponent implements OnInit {
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
-    this.pokemonService.get151Pokemon();
   }
 
   getPokemon(id: number): void {
