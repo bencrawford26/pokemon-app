@@ -81,6 +81,21 @@ export class PokemonService {
     }
   }
 
+  filterListByName(name: string): void {
+    this.clearFilters();
+    var listByName: Pokemon[] = [];
+    this.tempPokemonList = this.pokemonList;
+
+    for(let i = 0; i < this.pokemonList.length; i++) {
+      if(this.pokemonList[i].name.includes(name)) {
+        listByName.push(this.pokemonList[i]);
+      }
+    }
+
+    this.pokemonList = listByName;
+
+  }
+
   filterListByType(type: string): void {
     this.clearFilters();
     var listByType: Pokemon[] = [];

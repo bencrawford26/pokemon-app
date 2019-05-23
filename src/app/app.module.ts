@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ListDetailComponent } from './list-detail/list-detail.component';
 import { FilterMenuComponent } from './filter-menu/filter-menu.component';
 import { TilesComponent } from './tiles/tiles.component';
+import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TilesComponent } from './tiles/tiles.component';
     ListDetailComponent,
     FilterMenuComponent,
     TilesComponent,
+    PokemonSearchComponent,
   ],
   imports: [
     BrowserModule,

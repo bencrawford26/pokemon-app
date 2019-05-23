@@ -1,0 +1,8 @@
+input {
+    margin-left: 1vw;
+    border-bottom: 1px solid #fff;
+}
+
+::placeholder {
+    color: #fff;
+}
